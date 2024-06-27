@@ -54,7 +54,18 @@ class HomeView extends StackedView<HomeViewModel> {
             ),
           ),
         ],
-      )),
+      ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            viewModel.lShapes.clear();
+          },
+          tooltip: 'Clear',
+          child: Icon(Icons.delete_forever),
+        ),
+      ),
+
+
+
     );
   }
 

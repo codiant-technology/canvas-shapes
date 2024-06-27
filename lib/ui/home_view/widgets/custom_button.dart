@@ -15,14 +15,17 @@ class _CustomButtonState extends State<CustomButton> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(2.0),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: primaryColor,
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0), // Adjust the value as needed
+            ),
           ),
           onPressed: widget.onSubmit,
-          child: Text(widget.text,maxLines: 2,textAlign: TextAlign.center,),
+          child: Text(widget.text,maxLines: 2,textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 10),),
         ),
       ),
     );;
