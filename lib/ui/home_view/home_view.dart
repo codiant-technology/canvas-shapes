@@ -1,6 +1,7 @@
 import 'package:canvas_shapes/ui/home_view/widgets/custom_button.dart';
 import 'package:canvas_shapes/ui/home_view/widgets/custom_painter.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../util/constants/screen_size.dart';
@@ -17,6 +18,7 @@ class HomeView extends StackedView<HomeViewModel> {
   ) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
           body: Column(
         children: [
            Row(
@@ -35,7 +37,20 @@ class HomeView extends StackedView<HomeViewModel> {
               CustomButton(
                 text: 'Export to DXF file',
                 onSubmit: () {
-                  viewModel.saveAndShareDXF();
+                  if(viewModel.lShapes.isNotEmpty){
+                    viewModel.saveAndShareDXF();
+                  }else{
+                    Fluttertoast.showToast(
+                        msg: "No, Drawings found",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.black,
+                        textColor: Colors.white,
+                        fontSize: 12.0
+                    );
+                  }
+
                 },
               )
             ],
@@ -47,6 +62,9 @@ class HomeView extends StackedView<HomeViewModel> {
               onPanStart: viewModel.setStartPosition,
               onPanUpdate: viewModel.updatePosition,
               onPanEnd: viewModel.endDrag,
+              onTapUp: (tap){
+                viewModel.handleTap(tap.localPosition, context);
+              },
 
               child: CustomPaint(
                 painter: LShapePainter(viewModel),
