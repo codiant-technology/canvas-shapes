@@ -12,7 +12,7 @@ class HomeViewModel extends BaseViewModel with Initialisable {
   Offset? currentPosition;
   LShape? currentLShape;
   List<LShape> lShapes = [];
-  final double fixedWidth = 100.0; // Fixed width for the rectangles
+   double fixedWidth = 100.0; // Fixed width for the rectangles
   final double strokeWidth = 2.0; // Stroke width for painting
   final dxf = DXF.create();
   final double tolerance = 10.0;

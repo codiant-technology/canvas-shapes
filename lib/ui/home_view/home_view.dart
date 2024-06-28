@@ -23,17 +23,21 @@ class HomeView extends StackedView<HomeViewModel> {
         children: [
            Row(
             children: [
-              CustomButton(
-                text: 'New Kitchen Counter top',
-                onSubmit: () {},
-              ),
-              CustomButton(
-                text: 'New Island Counter top',
-                onSubmit: () {
-                  viewModel.lShapes.clear();
-
-                },
-              ),
+          CustomButton(
+          text: 'New Kitchen Counter top',
+            onSubmit: () {
+              viewModel.lShapes.clear();
+              viewModel.fixedWidth=100.0;
+              viewModel.rebuildUi();
+            },
+          ),
+        CustomButton(
+          text: 'New Island Counter top',
+          onSubmit: () {
+            viewModel.lShapes.clear();
+            viewModel.fixedWidth=150.0;
+            viewModel.rebuildUi();
+          },),
               CustomButton(
                 text: 'Export to DXF file',
                 onSubmit: () {
