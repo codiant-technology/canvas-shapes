@@ -21,7 +21,7 @@ class _CustomButtonState extends State<CustomButton> {
             backgroundColor: primaryColor,
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0), // Adjust the value as needed
+              borderRadius: BorderRadius.circular(8.0),
             ),
           ),
           onPressed: widget.onSubmit,
